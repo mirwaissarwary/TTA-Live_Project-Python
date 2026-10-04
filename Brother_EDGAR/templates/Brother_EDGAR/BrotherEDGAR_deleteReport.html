@@ -1,0 +1,21 @@
+{% extends "BrotherEDGAR_base.html" %}
+
+{% block title %}Delete Financial Report{% endblock %}
+
+{% block bodyClass %}deleteReport{% endblock %}
+{% block content %}
+<h3>DELETE REPORT:</h3>
+    <hr>
+	<div>
+		<h5>Are you sure you want to delete "{{item}}"?</h5>
+		<hr>
+        <form action="{% url 'be_deleteReport' item.id %}" method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" name="CONFIRM DELETE">
+        </form>
+		<br>
+		<button type="button"><a href="{% url 'BrotherEDGAR_home' %}">CANCEL</a></button>
+		<br>
+	</div>
+{% endblock %}

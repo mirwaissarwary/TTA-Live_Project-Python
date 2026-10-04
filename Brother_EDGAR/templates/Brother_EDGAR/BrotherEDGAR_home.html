@@ -1,0 +1,27 @@
+{% extends "BrotherEDGAR_base.html" %}
+
+{% block title %}Brother EDGAR{% endblock %}
+{% block bodyClass %}home{% endblock %}
+
+{% block content %}
+    <h3>Brother EDGAR welcomes you</h3>
+    <hr>
+    <div class="text-center">
+        <h5>Please select a report:</h5>
+        {# Django form including a dropdown list of Reports...action="../displayReport/" #}
+        <form method="POST">
+            <label id="home-label">Reports:</label>
+            {% csrf_token %}
+            {# form.report to get dropdown menu of accounts (Report model) #}
+            {{ form.report}}
+            <button type="submit"> CONFIRM </button>
+        </form>
+    </div>
+    <hr>
+    {# redirects the user to the create page #}
+    <div class="text-center">
+        <h5>create a new report</h5>
+        <button type="submit" class="new-report-button"><a href="{% url 'be_create' %}">New Financial Report</a></button>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+Notes for SEC.gov EDGAR API:
+    1.  search engine
+        https://www.sec.gov/edgar/search/
+    2.  example:
+
+    3.  api urls:
+        1. Each entity’s current filing history is available at the following URL:
+            https://data.sec.gov/submissions/CIK##########.json
+        2. The company-concept API returns all the XBRL disclosures from a single company (CIK)
+            and concept (a taxonomy and tag) into a single JSON file...
+            https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/AccountsPayableCurrent.json
+        3. This API returns all the company concepts data for a company into a single API call:
+            https://data.sec.gov/api/xbrl/companyfacts/CIK##########.json
+
+For Yahoo Finance
+    1. search Engine
+        https://finance.yahoo.com/lookup/
+    2. Use search Engine to find ticker symbols
+
+
+issue:
+1. Exception Type:	KeyError
+

@@ -1,0 +1,44 @@
+{% extends 'BrotherEDGAR_base.html' %}
+
+
+{% block title %}Financial Report Details:{% endblock %}
+
+{% block bodyClass %}displayReport{% endblock %}
+
+{% block content %}
+
+	<h3>Summary of Request:</h3>
+    <hr>
+	<br>
+	<div class="text-center">
+		<h5><strong>Report Name:</strong></t>   {{report.report_name}}</h5>
+		<h5><strong>Description:</strong></t>   {{report.description}}</h5>
+	</div>
+	<hr>
+	<div class="be_displayReport_buttons">
+		<form method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="View Details" name="Details"/>
+		</form>
+		<br>
+		{# Added link to href to updateReport AND deleteReport #}
+		<button type="button" class="be_displayReport_buttons" ><a href="{% url 'be_updateReport' report.id %}">EDIT REPORT</a></button>
+		<button type="button" class="be_displayReport_buttons" ><a href="{% url 'be_deleteReport' report.id %}">DELETE REPORT</a></button>
+	</div>
+	<hr>
+	<h5>Requested Search:</h5>
+	<table id ="updateReports-table">
+		<tr id="headerRow">
+			<th>Search Type:</th>
+			<th>Ticker Symbol:</th>
+			<th>CIK:</th>
+		</tr>
+		<tr>
+			<td class="center">{{ report.searchType }}</td>
+			<td class="center">{{ report.tickerSymbol }}</td>
+			<td class="center">{{ report.CIK }}</td>
+		</tr>
+	</table>
+
+{% endblock %}

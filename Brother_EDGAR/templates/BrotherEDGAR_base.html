@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		{#LINKS STYLE#}
+		<link rel="stylesheet" href="{% static 'Brother_EDGAR/css/BrotherEDGAR_style.css' %}">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		{#SCRIPTS#}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+		<title>{% block title%}{% endblock %}</title>
+	</head>
+
+	<header>
+		<div class="JavaScriptDropdown">
+			<div class="btn-group">
+				<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Menu</button>
+
+				{# drop down menu linked to registered URLs #}
+				<div class="dropdown-menu">
+					<a href="{% url 'BrotherEDGAR_home' %}" class="dropdown-item">Home</a>
+					<a href="{% url 'be_create' %}" class="dropdown-item">Create New Financial Report</a>
+				</div>
+
+			</div>
+		</div>
+	</header>
+
+	<body id="body" class="{% block bodyClass %}{% endblock %}">
+
+		<div class="BroE-container">
+			{% block content %} {% endblock %}
+		</div>
+
+		<section id="block-footer">
+			<p id="footer-right"><a href="#">Terms</a>|<a href="#">Privacy</a></p>
+			<p id="footer-left">&copy;2022 - Brother EDGAR</p>
+		</section>
+
+	</body>
+
+</html>

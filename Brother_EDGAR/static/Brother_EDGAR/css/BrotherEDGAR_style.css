@@ -1,0 +1,215 @@
+/* General Styling */
+
+html, body {
+	height: cover;
+	width: cover;
+}
+
+body {
+	font-family: papyrus, Lucida, Sans, Unicode;
+	text-align: center;
+	overflow: scroll;
+	background-color: green /* If bkg image is not avail */
+	background-position: center; /* Center the image */
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+/* background images */
+.home {
+    background-image: url('../images/BrotherEDGAR_3.png');
+}
+
+.create {
+     background-image: url('../images/BrotherEDGAR_12.png');
+}
+
+.displayReport {
+     background-image: url('../images/BrotherEDGAR_13.png');
+}
+
+.updateReport {
+     background-image: url('../images/BrotherEDGAR_11.png');
+}
+
+.deleteReport {
+     background-image: url('../images/BrotherEDGAR_8.png');
+}
+
+.searchPage {
+     background-image: url('../images/BrotherEDGAR_4.png');
+}
+
+.yahooFinance {
+     background-image: url('../images/BrotherEDGAR_3.png');
+}
+
+/* Drop-Down Menu Styling*/
+.JavaScriptDropdown{
+	position: relative;
+	margin-top: 0;
+}
+
+/*Container Styling */
+.BroE-container {
+	opacity: 0.75;
+	position: relative;
+	max-width: 80vw;
+	max-height: 80wh;
+	border-radius: 69px;
+	border: 2px solid yellow;
+	box-shadow: 5px 5px green;
+	padding: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+	margin-bottom: 100px;
+	text-align: center;
+	background-color: rgb(173, 255, 47); /*GreenYellow*/
+    color: Black;
+}
+
+.BroE-container h3 {
+	color: blue;
+	font-size: 24px;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-top: 10px;
+}
+.BroE-container h5{
+	color: rgb(0,0,205); /*MediumBlue*/
+}
+
+.BroE-container input, .BroE-container select{
+	width: 300px;
+	border-radius: 5px;
+	box-shadow: 4px 2px green;
+	text-align: center;
+}
+
+.BroE-container input:hover, .BroE-container select:hover{
+	background-color: gold;
+}
+
+/* Button styling */
+.BroE-container button, .BroE-container a {
+	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 13px;
+	color:green;
+}
+
+.BroE-container button:hover, .BroE-container a:hover {
+	background-color: gold;
+	text-decoration: none;
+}
+
+.be_displayReport_buttons {
+    display: inline-block;
+    text-align: center;
+}
+
+/* General Form Field Styling */
+.BroE-container label {
+	width: 125px;
+	margin-left: auto;
+	font-weight: bold;
+	opacity: initial;
+}
+
+#home-label {
+    width: 80px;
+    color: green;
+    margin-left: auto;
+	font-weight: bold;
+	opacity: initial;
+}
+
+/* General Table Styling */
+th{
+	border: 3px solid blue;
+}
+
+#headerRow {
+	color: blue;
+	text-align: center;
+}
+
+tr td{
+	height: 25px;
+	border: 2px solid blue;
+	word-wrap: normal;
+	vertical-align: top;
+	width: auto;
+}
+
+.center {
+	text-align: center;
+}
+
+#updateReports-table {
+	background-color: rgb(230, 230, 250);/*Lavender*/
+	width: 80%;
+	height: auto;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 2px solid gray;
+	border-collapse: collapse;
+	table-layout: auto;
+	float: center;
+	position: relative;
+}
+
+/* Footer styling */
+#block-footer {
+    clear: both;
+    display: flex;
+    width: 100%;
+	-moz-box-sizing: border-box;
+    margin: 0 auto;
+    background-color: darkslateblue;
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+}
+
+#block-footer a, #block-footer p {
+    flex: 1;
+    color: white;
+    padding: 15px 15px;
+	font-size: 14px;
+    line-height: 10px;
+	font-family:'PT Sans', Arial, Helvetica, sans-serif;
+}
+
+#footer-left {
+    width: 40%;
+    text-align: right;
+}
+
+#block-footer{
+	float:left;
+	clear:both;
+	width:100%;
+}
+
+#block-footer a {
+	color: white;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	text-decoration: none;
+	outline: medium none;
+}
+
+#block-footer a:hover {
+    color: steelblue;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+}

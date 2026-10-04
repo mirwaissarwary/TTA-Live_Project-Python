@@ -1,0 +1,75 @@
+{% extends "BrotherEDGAR_base.html" %}
+
+{% block title %}EDGAR Search Page{% endblock %}
+
+{% block bodyClass %}yahooFinance{% endblock %}
+
+{% block content %}
+
+<h1>Yahoo Finance Data Report</h1>
+<hr>
+{# show API failure message when views.py passed 'error' (vanished endpoint or response with no "data" key). #}
+
+{% if error %}
+<p><strong>Error:</strong> {{ error }}</p>
+<p>Yahoo quote fields are hidden because the API response had no usable stock data.</p>
+{% else %}
+<h3>Company Information:</h3>
+{% if company_name %}
+<p><strong>Company Name:</strong> {{company_name}}</p>
+{% endif %}
+{% if business_summary %}
+<p><strong>Business Summary:</strong> {{business_summary}}</p>
+{% endif %}
+{% comment %}
+<p><strong>full Time Employees:</strong> {{fullTimeEmployees}}</p>
+<p><strong>Industry confidence:</strong> {{industry_confidence}}</p>
+<p><strong>Insider confidence:</strong> {{insider_confidence}}</p>
+<hr>
+<p><strong>gross Margins:</strong> {{grossMargins}}</p>
+<p><strong>gross Profits:</strong> ${{grossProfits}}</p>
+<p><strong>debt To Equity:</strong> {{debtToEquity}}</p>
+<hr>
+{% endcomment %}
+{% if averageVolume %}
+<p><strong>average Volume:</strong> {{averageVolume}}</p>
+{% endif %}
+{% if averageVolume10days %}
+<p><strong>averageVolume10days:</strong> {{averageVolume10days}}</p>
+{% endif %}
+{% if circulatingSupply %}
+<p><strong>circulatingSupply:</strong> {{circulatingSupply}}</p>
+{% endif %}
+{% if regularMarketDayLow %}
+<p><strong>regularMarketDayLow:</strong> {{regularMarketDayLow}}</p>
+{% endif %}
+{% if regularMarketDayHigh %}
+<p><strong>regularMarketDayHigh:</strong> {{regularMarketDayHigh}}</p>
+{% endif %}
+{% if regularMarketOpen %}
+<p><strong>regularMarketOpen:</strong> {{regularMarketOpen}}</p>
+{% endif %}
+
+<h3>Stock price information:</h3>
+{% if fiftyDayAverage %}
+<p><strong>Fifty-day Average:</strong> ${{ fiftyDayAverage }}</p>
+{% endif %}
+{% if dayHigh %}
+<p><strong>Stock price Day High:</strong> ${{ dayHigh }}</p>
+{% endif %}
+{% if dayLow %}
+<p><strong>Stock price Day Low:</strong> ${{ dayLow }}</p>
+{% endif %}
+{% if ask or askSize %}
+<p>Reflecting the demand and liquidity of security:</p>
+{% endif %}
+{% if ask %}
+<p><strong>ask:</strong> ${{ ask }}</p>
+{% endif %}
+{% if askSize %}
+<p><strong>ask Size:</strong> {{ askSize }} [x100 shares]</p>
+{% endif %}
+<hr>
+
+{% endif %}
+{% endblock %}

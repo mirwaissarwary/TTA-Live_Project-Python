@@ -1,0 +1,26 @@
+{% extends "BrotherEDGAR_base.html" %}
+
+{% block title %}Update Financial Reports{% endblock %}
+
+{% block bodyClass %}updateReport{% endblock %}
+
+{% block content %}
+<h3>EDIT REPORTS</h3>
+	<div>
+		<p>(Click "LookUp" to find the ticker symbol)  <a href="https://finance.yahoo.com/lookup/" target="_blank"> LOOKUP </a> </p>
+
+		{# note action='url pattern' will direct the form to that 'url pattern' #}
+		{# no action means default = saves entry into dB #}
+		<form method="POST">
+			{# Security check #}
+			{% csrf_token %}
+			{# Display form as paragraph layout ('block') #}
+			{{ form.as_p }}
+			{# include form button to save the entry #}
+			<button type="submit" name="Edit_Report">CONFIRM EDIT</button>
+		</form>
+
+		<br>
+	</div>
+
+{% endblock %}
