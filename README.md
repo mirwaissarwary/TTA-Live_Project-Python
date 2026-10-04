@@ -90,20 +90,25 @@ dayLow = data.get("dayLow")
 
 **Why it mattered:** The useful product isn’t a raw dump — it’s selecting fields a researcher cares about, surviving schema gaps, and failing loudly (not with a 500) when the upstream feed blocks or has no quote for that symbol.
 
-## Project layout (my slice)
+## Project layout
+
+This public repo is a **Brother EDGAR–only** runnable slice (teammate apps omitted). Thin Django project package is `config/`.
 
 ```
-AppBuilder9000/
-  manage.py
-  Brother_EDGAR/
-    models.py
-    forms.py
-    views.py
-    urls.py
-    templates/Brother_EDGAR/   (home, create, display, update, delete, yahooFinance, searchPage)
+manage.py
+requirements.txt
+config/                 # Django project settings / urls / wsgi
+Brother_EDGAR/
+  models.py
+  forms.py
+  views.py
+  urls.py
+  templates/Brother_EDGAR/   (home, create, display, update, delete, yahooFinance, searchPage)
+  static/Brother_EDGAR/      # CSS + images
+images/                 # README screenshots
 ```
 
-Other hobby apps under AppBuilder9000 were owned by teammates.
+Originally built inside the multi-app **AppBuilder9000** live project; other hobby apps were owned by teammates and are not in this repo.
 
 ## Team context
 
@@ -123,11 +128,12 @@ AppBuilder9000 App Directory — select **Brother EDGAR** among the other apps:
 
 ## How to run locally
 
-1. **Prerequisites:** Python 3.x, `pip`, virtualenv; **PyCharm** recommended for this project.
-2. Open `.../Python-LiveProject/AppBuilder9000`.
-3. Create/activate a venv; `pip install -r requirements.txt` and `pip install yfinance` if needed.
+1. **Prerequisites:** Python 3.11, `pip`; **PyCharm** works well for this project.
+2. Clone this repo and open the **repo root** (the folder with `manage.py`).
+3. Create/activate a venv, then install deps:
+   `python -m venv .venv` → activate → `pip install -r requirements.txt`
 4. `python manage.py migrate` then `python manage.py runserver 127.0.0.1:8000`.
-5. Open Brother EDGAR from the AppBuilder9000 home (e.g. `/Brother_EDGAR/home/`).
+5. Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) — `/` redirects to `/Brother_EDGAR/home/`.
 6. If live Yahoo quotes fail with crumb / unauthorized errors, try disconnecting VPN — that restored quotes in local testing.
 
 `127.0.0.1:8000` is localhost + Django’s common default port — change the port if something else already owns `8000`.
