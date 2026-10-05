@@ -1,5 +1,8 @@
-# Django matches the Tech Academy live-project venv (2.2.5, Python 3.11).
+# Django matches the Tech Academy live-project pin (2.2.5, Python 3.11).
 # requests is newer than the course pin (2.22.0) because yfinance needs >=2.31.
+# whitenoise 6.1 is the last release that still supports Django 2.2.
 django==2.2.5
 requests==2.32.3
 yfinance==0.2.54
+gunicorn==23.0.0
+whitenoise==6.1.0

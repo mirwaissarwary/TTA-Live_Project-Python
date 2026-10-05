@@ -8,15 +8,31 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
+def _split_hosts(raw):
+    return [host.strip() for host in (raw or '').split(',') if host.strip()]
+
+
 # Throwaway local default. Set DJANGO_SECRET_KEY in the environment for any host.
 SECRET_KEY = os.environ.get(
     'DJANGO_SECRET_KEY',
     'dev-only-brother-edgar-not-for-production-7f3c9a2e1b84',
 )
 
-DEBUG = True
+# Default off so a public host is not accidentally in debug. Locally:
+# DJANGO_DEBUG=true
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() in ('1', 'true', 'yes')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# Always allow localhost and Render subdomains. Django 2.2 treats a leading
+# dot as a subdomain wildcard (".onrender.com" covers *.onrender.com).
+# Extra hosts: DJANGO_ALLOWED_HOSTS=example.com,www.example.com
+ALLOWED_HOSTS = []
+for host in (
+    ['localhost', '127.0.0.1', '.onrender.com']
+    + _split_hosts(os.environ.get('DJANGO_ALLOWED_HOSTS', ''))
+):
+    if host not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(host)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -30,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -58,6 +75,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+# SQLite is fine for this demo. On Render the disk is ephemeral: saved
+# reports disappear on redeploy or when the free instance is recycled.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -79,3 +98,4 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
