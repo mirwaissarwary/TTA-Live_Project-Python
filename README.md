@@ -4,7 +4,7 @@ Django app inside the Tech Academy **AppBuilder9000** live project. **Brother ED
 
 **My role:** On the live-project team I owned the **Brother EDGAR** app end-to-end — Django model + forms, create / display / update / delete with delete confirmation, home dropdown to open a saved report, and market-data integration that requests quote info by ticker and renders selected fields on the results page.
 
-> **Live demo:** _coming soon_ — repo is ready for a Render free web service (`render.yaml`). URL will be filled in after the service is created.
+> **Access:** Clone this repo and run locally (see How to run). There is no hosted live demo — GitHub is the public entry point.
 
 ## Screenshots
 
@@ -97,10 +97,6 @@ This public repo is a **Brother EDGAR–only** runnable slice (teammate apps omi
 ```
 manage.py
 requirements.txt
-Procfile                # gunicorn, binds Render $PORT
-build.sh                # install, collectstatic, migrate
-render.yaml             # Render Blueprint
-runtime.txt             # Python 3.11.11
 config/                 # Django project settings / urls / wsgi
 Brother_EDGAR/
   models.py
@@ -143,13 +139,3 @@ AppBuilder9000 App Directory — select **Brother EDGAR** among the other apps:
 `127.0.0.1:8000` is localhost + Django’s common default port — change the port if something else already owns `8000`.
 
 `DEBUG` defaults to off (`DJANGO_DEBUG` unset). For local tracebacks, export `DJANGO_DEBUG=true` before `runserver`. Optional: `DJANGO_SECRET_KEY` (a throwaway default is used if unset).
-
-## Hosting (Render)
-
-Public demo target is a **Render** free web service from this repo (`render.yaml`, `Procfile`, `build.sh`).
-
-- Build: `pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate --noinput`
-- Start: `gunicorn config.wsgi --bind 0.0.0.0:$PORT --log-file -`
-- Env: `DJANGO_SECRET_KEY` (Render can generate this), `DJANGO_DEBUG=false`, `DJANGO_ALLOWED_HOSTS` (localhost and `.onrender.com` are always allowed; add extra hosts comma-separated), `PYTHON_VERSION=3.11.11`
-- **SQLite on the host is ephemeral.** Saved reports reset when the service redeploys or the free instance is recycled. That is expected for this demo.
-
